@@ -1,0 +1,8 @@
+myenv/
+__pycache__/
+*.py[cod]
+.streamlit/secrets.toml
+Hate Speech/temp_files/
+Hate Speech/temp_input_file
+.DS_Store
+Thumbs.db
