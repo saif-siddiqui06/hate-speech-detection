@@ -34,3 +34,13 @@ The tokenizer is expected at:
 ```text
 Hate Speech/tokenizer.pkl
 ```
+
+## Dashboard Features
+
+- Dashboard overview with total analyses, class distribution, trends, and recent activity
+- Text analysis with toxicity score, severity level, emotion analysis, harmful keyword detection, and polite rewrite suggestion
+- Audio analysis with upload/record input, speech-to-text transcription, waveform preview, audio metrics, and model prediction
+- Live monitoring prototype for short microphone samples
+- Analytics dashboard with prediction, severity, emotion, and weekly trend charts
+- Social media moderation simulator with flagged comment cards
+- About page with methodology, technologies, and responsible use notes
