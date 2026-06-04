@@ -26,8 +26,11 @@ def inject_dashboard_css():
         """
         <style>
             .stApp {
-                background: #0b1120;
-                color: #e5e7eb;
+                background:
+                    radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 28rem),
+                    radial-gradient(circle at top right, rgba(20, 184, 166, 0.16), transparent 30rem),
+                    linear-gradient(180deg, #f8fafc 0%, #e0f2fe 48%, #eef2ff 100%);
+                color: #0f172a;
             }
             .block-container {
                 max-width: 1220px;
@@ -35,116 +38,149 @@ def inject_dashboard_css():
                 padding-bottom: 3rem;
             }
             [data-testid="stSidebar"] {
-                background: linear-gradient(180deg, #020617 0%, #111827 100%);
-                border-right: 1px solid rgba(148, 163, 184, 0.18);
+                background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%);
+                border-right: 1px solid rgba(255, 255, 255, 0.18);
             }
             h1, h2, h3 {
-                color: #f8fafc;
+                color: #0f172a;
                 letter-spacing: 0;
             }
+            [data-testid="stSidebar"] h1,
+            [data-testid="stSidebar"] h2,
+            [data-testid="stSidebar"] h3,
+            [data-testid="stSidebar"] label,
+            [data-testid="stSidebar"] p,
+            [data-testid="stSidebar"] span {
+                color: #f8fafc;
+            }
             .dashboard-hero {
-                border: 1px solid rgba(148, 163, 184, 0.22);
+                border: 1px solid rgba(30, 64, 175, 0.25);
                 background:
-                    radial-gradient(circle at top right, rgba(59, 130, 246, 0.22), transparent 28rem),
-                    linear-gradient(135deg, #111827 0%, #172033 62%, #0f172a 100%);
+                    radial-gradient(circle at top right, rgba(45, 212, 191, 0.42), transparent 23rem),
+                    linear-gradient(135deg, #1d4ed8 0%, #2563eb 45%, #0891b2 100%);
                 border-radius: 18px;
                 padding: 28px;
-                box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+                box-shadow: 0 24px 60px rgba(37, 99, 235, 0.22);
                 margin-bottom: 20px;
             }
             .dashboard-hero h1 {
                 margin: 0;
                 font-size: 42px;
                 line-height: 1.05;
+                color: #ffffff;
             }
             .dashboard-hero p {
-                color: #cbd5e1;
+                color: #eff6ff;
                 max-width: 820px;
                 margin-top: 12px;
                 font-size: 16px;
             }
             .metric-card, .glass-card {
-                border: 1px solid rgba(148, 163, 184, 0.22);
-                background: rgba(15, 23, 42, 0.76);
+                border: 1px solid rgba(37, 99, 235, 0.16);
+                background: rgba(255, 255, 255, 0.92);
                 border-radius: 16px;
                 padding: 18px;
-                box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+                box-shadow: 0 16px 34px rgba(15, 23, 42, 0.10);
             }
             .metric-label {
-                color: #94a3b8;
+                color: #475569;
                 font-size: 13px;
                 margin-bottom: 6px;
             }
             .metric-value {
-                color: #f8fafc;
+                color: #1d4ed8;
                 font-size: 30px;
                 font-weight: 800;
             }
             .pipeline-grid {
                 display: grid;
-                grid-template-columns: repeat(5, minmax(0, 1fr));
-                gap: 10px;
-                margin: 14px 0;
+                grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+                gap: 8px;
+                margin: 10px 0 18px 0;
             }
             .pipeline-step {
-                background: #111827;
-                border: 1px solid rgba(148, 163, 184, 0.22);
-                border-radius: 14px;
-                padding: 14px;
-                min-height: 92px;
+                background: rgba(255, 255, 255, 0.94);
+                border: 1px solid rgba(14, 165, 233, 0.22);
+                border-radius: 12px;
+                padding: 11px 12px;
+                min-height: 0;
+                box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
             }
             .step-id {
-                color: #38bdf8;
+                color: #0891b2;
                 font-weight: 800;
-                font-size: 13px;
+                font-size: 11px;
             }
             .step-title {
-                color: #f8fafc;
+                color: #0f172a;
                 font-weight: 700;
-                margin-top: 6px;
+                margin-top: 4px;
+                font-size: 15px;
             }
             .step-copy {
-                color: #94a3b8;
-                font-size: 13px;
-                margin-top: 4px;
+                color: #475569;
+                font-size: 12px;
+                margin-top: 3px;
+                line-height: 1.35;
             }
             .result-card {
                 border-radius: 18px;
                 padding: 22px;
-                border: 1px solid rgba(148, 163, 184, 0.25);
-                background: rgba(15, 23, 42, 0.82);
-                box-shadow: 0 20px 46px rgba(0, 0, 0, 0.25);
+                border: 1px solid rgba(37, 99, 235, 0.18);
+                background: rgba(255, 255, 255, 0.95);
+                box-shadow: 0 20px 42px rgba(15, 23, 42, 0.12);
             }
             .tag {
                 display: inline-block;
                 padding: 7px 10px;
                 margin: 4px 6px 4px 0;
                 border-radius: 999px;
-                background: rgba(239, 68, 68, 0.16);
-                color: #fecaca;
-                border: 1px solid rgba(248, 113, 113, 0.45);
+                background: #fee2e2;
+                color: #991b1b;
+                border: 1px solid #fca5a5;
                 font-size: 13px;
                 font-weight: 700;
             }
             .keyword-highlight {
-                background: rgba(239, 68, 68, 0.34);
-                color: #fff;
+                background: #fecaca;
+                color: #7f1d1d;
                 padding: 2px 5px;
                 border-radius: 5px;
+                font-weight: 800;
             }
             .rewrite-card {
-                border-left: 5px solid #38bdf8;
-                background: rgba(14, 165, 233, 0.12);
+                border-left: 5px solid #0d9488;
+                background: #ccfbf1;
                 border-radius: 14px;
                 padding: 18px;
-                color: #e0f2fe;
+                color: #134e4a;
             }
             .feed-card {
-                border: 1px solid rgba(148, 163, 184, 0.22);
-                background: rgba(15, 23, 42, 0.8);
+                border: 1px solid rgba(37, 99, 235, 0.16);
+                background: rgba(255, 255, 255, 0.94);
                 border-radius: 16px;
                 padding: 16px;
                 margin-bottom: 12px;
+                box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+            }
+            div[data-testid="stDataFrame"],
+            div[data-testid="stTable"] {
+                background: rgba(255, 255, 255, 0.94);
+                border-radius: 12px;
+            }
+            .stTabs [data-baseweb="tab-list"] {
+                gap: 8px;
+            }
+            .stTabs [data-baseweb="tab"] {
+                background: rgba(255, 255, 255, 0.78);
+                border-radius: 999px;
+                color: #1e293b;
+                padding: 8px 16px;
+                border: 1px solid rgba(37, 99, 235, 0.14);
+            }
+            .stTabs [aria-selected="true"] {
+                background: #2563eb;
+                color: #ffffff;
             }
             @media (max-width: 820px) {
                 .dashboard-hero h1 { font-size: 30px; }
@@ -188,13 +224,11 @@ def pipeline(steps):
     html = ['<div class="pipeline-grid">']
     for index, (title, copy) in enumerate(steps, start=1):
         html.append(
-            f"""
-            <div class="pipeline-step">
-                <div class="step-id">STEP {index}</div>
-                <div class="step-title">{title}</div>
-                <div class="step-copy">{copy}</div>
-            </div>
-            """
+            f'<div class="pipeline-step">'
+            f'<div class="step-id">STEP {index}</div>'
+            f'<div class="step-title">{title}</div>'
+            f'<div class="step-copy">{copy}</div>'
+            f'</div>'
         )
     html.append("</div>")
     st.markdown("".join(html), unsafe_allow_html=True)
@@ -202,19 +236,19 @@ def pipeline(steps):
 
 def pie_chart(df, title):
     fig = px.pie(df, names="Label", values="Count", hole=0.45, title=title)
-    fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(template="plotly_white", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
     return fig
 
 
 def bar_chart(df, x, y, title, color=None):
     fig = px.bar(df, x=x, y=y, title=title, color=color)
-    fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(template="plotly_white", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
     return fig
 
 
 def line_chart(df, x, y, title):
     fig = px.line(df, x=x, y=y, markers=True, title=title)
-    fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(template="plotly_white", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
     return fig
 
 
@@ -243,7 +277,7 @@ def gauge(score):
             title={"text": "Toxicity Score"},
         )
     )
-    fig.update_layout(template="plotly_dark", height=270, paper_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(template="plotly_white", height=270, paper_bgcolor="rgba(0,0,0,0)")
     return fig
 
 
@@ -253,10 +287,10 @@ def result_panel(result):
     st.markdown(
         f"""
         <div class="result-card">
-            <div style="color:#94a3b8;font-size:13px;">Prediction Result</div>
+            <div style="color:#475569;font-size:13px;">Prediction Result</div>
             <div style="font-size:34px;font-weight:850;color:{color};">{prediction}</div>
-            <div style="color:#cbd5e1;margin-top:6px;">Confidence: {result["confidence"] * 100:.1f}%</div>
-            <div style="color:#cbd5e1;margin-top:3px;">Severity: {result["severity"]}</div>
+            <div style="color:#334155;margin-top:6px;">Confidence: {result["confidence"] * 100:.1f}%</div>
+            <div style="color:#334155;margin-top:3px;">Severity: {result["severity"]}</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -271,7 +305,7 @@ def emotion_chart(scores):
 def probability_chart(probabilities):
     df = pd.DataFrame({"Class": list(probabilities.keys()), "Probability": [v * 100 for v in probabilities.values()]})
     fig = px.bar(df, x="Class", y="Probability", color="Class", title="Prediction Probability")
-    fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(template="plotly_white", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
     return fig
 
 

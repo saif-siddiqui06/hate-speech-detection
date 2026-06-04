@@ -273,10 +273,10 @@ def social_moderator_page(model, tokenizer):
         st.markdown(
             f"""
             <div class="feed-card">
-                <div style="color:#94a3b8;">User Comment</div>
-                <div style="font-size:17px;margin:8px 0;color:#e5e7eb;">{result["text"]}</div>
+                <div style="color:#475569;">User Comment</div>
+                <div style="font-size:17px;margin:8px 0;color:#0f172a;">{result["text"]}</div>
                 <div style="color:{color};font-weight:800;">{badge}</div>
-                <div style="color:#cbd5e1;">Prediction: {result["prediction"]} | Severity: {result["severity"]} | Emotion: {result["emotion"]}</div>
+                <div style="color:#334155;">Prediction: {result["prediction"]} | Severity: {result["severity"]} | Emotion: {result["emotion"]}</div>
             </div>
             """,
             unsafe_allow_html=True,
