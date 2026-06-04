@@ -3,5 +3,6 @@ tensorflow
 numpy
 pandas
 h5py
-openai-whisper
 plotly
+SpeechRecognition
+pydub
