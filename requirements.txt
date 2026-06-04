@@ -1,8 +1,6 @@
 streamlit
-tensorflow
 numpy
 pandas
-h5py
 plotly
 SpeechRecognition
 pydub

@@ -5,7 +5,6 @@ from html import escape
 
 import numpy as np
 import streamlit as st
-import tensorflow as tf
 
 
 BASE_DIR = Path(__file__).parent
@@ -50,6 +49,15 @@ EMOTION_KEYWORDS = {
 
 @st.cache_resource(show_spinner="Loading trained hate speech classifier...")
 def load_model_and_tokenizer():
+    try:
+        import tensorflow as tf
+    except ImportError:
+        st.warning(
+            "TensorFlow is not available in this environment. "
+            "The app is using a lightweight demo classifier so the dashboard can run on Streamlit Cloud."
+        )
+        return None, None
+
     if not MODEL_PATH.exists():
         st.error(f"Model file not found: {MODEL_PATH}")
         st.stop()
@@ -66,6 +74,11 @@ def load_model_and_tokenizer():
 
 def classify_text(text, model, tokenizer):
     clean_text = text.strip()
+    if model is None or tokenizer is None:
+        return classify_text_lightweight(clean_text)
+
+    import tensorflow as tf
+
     sequence = tokenizer.texts_to_sequences([clean_text])
     padded = tf.keras.preprocessing.sequence.pad_sequences(
         sequence,
@@ -107,6 +120,45 @@ def calculate_toxicity_score(prediction, probabilities):
     if prediction == "Normal":
         return round(max(0.0, (1.0 - normal) * 45), 1)
     return round(min(100.0, (hate * 100) + (abusive * 72)), 1)
+
+
+def classify_text_lightweight(text):
+    keywords = detect_harmful_keywords(text)
+    lower_text = text.lower()
+    threat_terms = {"kill", "hate", "worthless"}
+    strong_hits = len(set(re.findall(r"\b[\w']+\b", lower_text)).intersection(threat_terms))
+
+    if strong_hits:
+        probabilities = {"Hate Speech": 0.72, "Abusive": 0.22, "Normal": 0.06}
+        prediction = "Hate Speech"
+    elif keywords:
+        probabilities = {"Hate Speech": 0.18, "Abusive": 0.68, "Normal": 0.14}
+        prediction = "Abusive"
+    else:
+        probabilities = {"Hate Speech": 0.05, "Abusive": 0.12, "Normal": 0.83}
+        prediction = "Normal"
+
+    confidence = probabilities[prediction]
+    toxicity_score = calculate_toxicity_score(
+        prediction,
+        [probabilities["Hate Speech"], probabilities["Abusive"], probabilities["Normal"]],
+    )
+    severity = get_severity(toxicity_score)
+    emotion, emotion_scores = detect_emotion(text)
+
+    return {
+        "text": text,
+        "prediction": prediction,
+        "confidence": confidence,
+        "probabilities": probabilities,
+        "toxicity_score": toxicity_score,
+        "severity": severity,
+        "emotion": emotion,
+        "emotion_scores": emotion_scores,
+        "keywords": keywords,
+        "highlighted_text": highlight_keywords(text, keywords),
+        "rewrite": polite_rewrite(text, prediction),
+    }
 
 
 def get_severity(score):
