@@ -4,6 +4,14 @@ This project is a Streamlit-based machine learning dashboard for detecting harmf
 
 The application is designed as an M.Tech-level project demo with a clean dashboard UI, model prediction insights, visual analytics, and a social media moderation simulator.
 
+## Live Demo
+
+Try the deployed app here:
+
+```text
+https://hate-speech-detection-grmxl9ny798gwmzbu2pwwr.streamlit.app/
+```
+
 ## Project Objective
 
 Online platforms receive a large amount of user-generated content every day. Some of this content may be abusive, hateful, or unsafe for public discussion. This project demonstrates how a machine learning model can assist content moderation by classifying text into:
